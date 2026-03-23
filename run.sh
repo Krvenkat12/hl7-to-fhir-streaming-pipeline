@@ -67,7 +67,7 @@ python sender.py &
 python receiver.py &
 
 echo "[7/7] Launching Streamlit UI..."
-streamlit run frontend.py > dev/null
+streamlit run --server.showEmailPrompt=false frontend.py
 
 echo "=============================================="
 echo "Pipeline launched successfully!"

@@ -41,7 +41,7 @@ start "Pipeline_Sender" cmd /k "python sender.py"
 start "Pipeline_Receiver" cmd /k "python receiver.py"
 
 echo [7/7] Launching Streamlit UI...
-streamlit run frontend.py > NUL
+streamlit run --server.showEmailPrompt=false frontend.py
 
 echo ==============================================
 echo Pipeline launched successfully!
