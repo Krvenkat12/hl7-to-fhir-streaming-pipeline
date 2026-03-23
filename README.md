@@ -11,13 +11,13 @@ The goal of this project is to convert patient messages from HL7v2 format, which
 - As a preliminary step for the data, each row is transformed into a pipe-delineated string that adheres to HL7v2 format. This is done because Synthea does not natively support outputting data in HL7v2 but does support formats such as CSV and FHIR.
 - Each string is then streamed to Kafka, and on the receiving end as each message is received, the string is broken down into its individual components and transformed into a JSON/dictionary format that adheres to FHIR.
 - Each converted message is then posted to the HAPI FHIR server and inserted into Postgres database using SQL. The FHIR server will display the patient data in JSON format. Each page will display about 20 patients, and each subsequent page can be navigated to by finding, on the page, the URL associated with the "next" relation.
-- The program will open both the FHIR server as well as a web application which will display the Postgres DB. These pages can be refreshed as the data is continuously being sent and received.
-- The web application has been made using Streamlit, which is framework that provides developers with intuitive tools for showcasing and analyzing data. The app features an AI chatbot that can generate and run SQL queries on the database based on your input. The generative AI model under the hood is Gemini 3 Flash, which was chosen based on its performance of generating SQL code as well as the availability of a free tier with access to more-than-capable models.
+- The program will open both the FHIR server as well as a web application which will display the Postgres DB. These pages can be refreshed as the data is continuously being streamed.
+- The web application has been made using Streamlit, which is a framework that provides developers with intuitive tools for showcasing and analyzing data. The app features an AI chatbot that can generate and run SQL queries on the database based on your input. The generative AI model under the hood is Gemini 3 Flash, which was chosen based on its performance of generating SQL code as well as the availability of a free tier with access to more-than-capable models.
 
 ## Usage
 - Clone this repo
-- In a terminal, in the root of the project, type and enter ```.\run.bat``` (or ```sh run.sh``` on Mac/Linux) to begin the program. This batch script prompts the user for their Gemini API key, which can be generateed for free [here](https://aistudio.google.com/), installs dependencies, starts the Docker containers, opens the FHIR server, and runs each Python script concurrently in three separate terminals.
-- To terminate the Docker containers, type and enter ```.\stop.bat``` (or ```sh stop.sh``` on Mac/Linux).
+- In a terminal, in the root of the project, type and enter ```.\run.bat``` (or ```sh run.sh``` on Mac/Linux) to begin the program. This batch script prompts the user for their Gemini API key, which can be generateed for free [here](https://aistudio.google.com/), installs dependencies, starts the Docker containers, opens the FHIR server, and runs each Python script concurrently.
+- To terminate the Docker containers, in a terminal, type and enter ```.\stop.bat``` (or ```sh stop.sh``` on Mac/Linux).
 
 ## Data Sources & Acknowledgement
 The mock patient data used to simulate the streaming environment in this project was generated using **[Synthea™](https://github.com/synthetichealth/synthea)**, an open-source, synthetic patient population simulator.
