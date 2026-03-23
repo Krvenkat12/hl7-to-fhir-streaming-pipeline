@@ -1,6 +1,9 @@
 # HL7v2 to FHIR Streaming Pipeline
 The goal of this project is to convert patient messages from HL7v2 format, which is still the dominant healthcare data exchange framework in the United States despite releasing in 1989, to the modern HL7 FHIR framework using an ETL pipeline solution. Although moving off of old infrastructure can be timely and costly, FHIR comes with an array of fruitful benefits for both health-tech developers and doctors.
 
+<img width="1835" height="722" alt="image" src="https://github.com/user-attachments/assets/41476a64-3b0e-4d0d-b605-cf0e47b7bd1f" />
+
+
 ## How does it work?
 - First, synthetic patient records (CSV, non-FHIR) are generated using [Synthea](https://github.com/synthetichealth/synthea). A set of a little over 100 records are provided in this repo, but if you would like to generate your own, copy the patients.csv file from Synthea's output to the root of this project.
 - Several Docker containers are initialized, such as Kafka for message streaming, HAPI-FHIR to use as a mock FHIR server, and Postgres to send the results to an SQL database. **Docker Desktop must be running for the code to work so that these containers can be created.**
